@@ -1,4 +1,28 @@
+// Others
+
+$borderRadius: 15px;
+
+// Colors
+
 $darkPurple: #3e4083;
 $purple: #9698fb;
 $blue: #e2f6fa;
-$gray: #bab5b5;
+
+// Themes
+
+:root {
+  // --purple-theme-main-color: $darkPurple;
+  // --purple-theme-second-color: $purple;
+
+  --purple-theme-main-color: #3e4083;
+  --purple-theme-second-color: #9698fb;
+  --purple-theme-light-color: #fff;
+  --purple-theme-dark-color: #000;
+  --purple--theme-neutral-color-1: #d9d9d9;
+
+  --main-color: var(--purple-theme-main-color);
+  --second-color: var(--purple-theme-second-color);
+  --light-color: var(--purple-theme-light-color);
+  --dark-color: var(--purple-theme-dark-color);
+  --neutral-color-1: var(--purple--theme-neutral-color-1);
+}

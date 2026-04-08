@@ -1,0 +1,33 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin bordered {
+  border: 2px solid var(--dark-color);
+}
+
+@mixin flexibleText($computerSize, $mobileSize) {
+  $deltaSize: $computerSize - $mobileSize;
+
+  $computerWidthSize: 1920px;
+  $mobileWidthSize: 420px;
+  $deltaWidthSize: $computerWidthSize - $mobileWidthSize;
+
+  $delta: calc($deltaSize / $deltaWidthSize);
+
+  @if $computerSize == $mobileSize {
+    font-size: $computerSize;
+  } @else {
+    font-size: calc($delta * 100vw + ($mobileSize - $delta * $mobileWidthSize));
+  }
+
+  @media (width > $computerWidthSize) {
+    font-size: $computerSize;
+  }
+
+  @media (width < $mobileWidthSize) {
+    font-size: $mobileSize;
+  }
+}

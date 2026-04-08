@@ -1,0 +1,71 @@
+@use "@styles/mixins.scss";
+@use "@styles/vars.scss";
+
+.body {
+  width: 550px;
+  height: 800px;
+
+  padding: 20px 10px;
+
+  border-radius: vars.$borderRadius;
+  @include mixins.bordered;
+
+  background-color: var(--light-color);
+
+  & > h1 {
+    @include mixins.flexibleText(30px, 22px);
+
+    text-align: center;
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.inputs {
+  margin-bottom: 10px;
+  padding: 0 25px;
+
+  & > *:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.inputBody {
+  display: flex;
+  flex-direction: column;
+
+  & > p {
+    margin-bottom: 5px;
+
+    @include mixins.flexibleText(20px, 16px);
+  }
+
+  & > input {
+    @include mixins.flexibleText(16px, 12px);
+
+    border-radius: vars.$borderRadius;
+    @include mixins.bordered;
+
+    background-color: var(--neutral-color-1);
+
+    height: 50px;
+    width: 100%;
+
+    padding: 0 8px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > button {
+    background-color: var(--second-color);
+  }
+
+  & > a {
+  }
+}

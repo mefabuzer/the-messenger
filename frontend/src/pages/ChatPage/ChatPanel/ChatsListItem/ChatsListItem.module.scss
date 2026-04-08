@@ -2,7 +2,7 @@
 @use "sass:color";
 
 .item {
-  background-color: vars.$gray;
+  // background-color: vars.$gray;
 
   height: 70px;
   width: 100%;
@@ -21,7 +21,7 @@
   transition: all 150ms linear;
 
   &:hover {
-    background-color: color.adjust(vars.$gray, $lightness: 15%);
+    // background-color: color.adjust(vars.$gray, $lightness: 15%);
   }
 }
 
