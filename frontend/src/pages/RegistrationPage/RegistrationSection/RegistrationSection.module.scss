@@ -100,9 +100,11 @@
     }
   }
 
-  & > a {
-    color: functions.darken(var(--neutral-color-2), 25);
-
+  & > p {
     @include mixins.flexibleText(16px, 14px);
+
+    & > a {
+      color: functions.darken(var(--neutral-color-2), 25);
+    }
   }
 }
