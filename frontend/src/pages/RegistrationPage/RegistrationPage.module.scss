@@ -1,4 +1,5 @@
 @use "@styles/mixins.scss";
+@use "@styles/vars.scss";
 
 .page {
   height: 100vh;
@@ -19,5 +20,10 @@
     top: 0;
 
     z-index: -1;
+  }
+
+  @media (orientation: landscape) and (max-width: calc(vars.$computerWidthSize / 2)) {
+    height: 100vw;
+    width: 100vw;
   }
 }

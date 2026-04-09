@@ -1,6 +1,10 @@
 // Others
 
+$computerWidthSize: 1920px;
+$mobileWidthSize: 420px;
+
 $borderRadius: 15px;
+$transition: 150ms ease-in;
 
 // Colors
 
@@ -18,11 +22,13 @@ $blue: #e2f6fa;
   --purple-theme-second-color: #9698fb;
   --purple-theme-light-color: #fff;
   --purple-theme-dark-color: #000;
-  --purple--theme-neutral-color-1: #d9d9d9;
+  --purple-theme-neutral-color-1: #d9d9d9;
+  --purple-theme-neutral-color-2: #64b7e0;
 
   --main-color: var(--purple-theme-main-color);
   --second-color: var(--purple-theme-second-color);
   --light-color: var(--purple-theme-light-color);
   --dark-color: var(--purple-theme-dark-color);
-  --neutral-color-1: var(--purple--theme-neutral-color-1);
+  --neutral-color-1: var(--purple-theme-neutral-color-1);
+  --neutral-color-2: var(--purple-theme-neutral-color-2);
 }

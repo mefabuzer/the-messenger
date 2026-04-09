@@ -3,6 +3,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 
 function App() {
   // return <ChatPage />;
+
   return <RegistrationPage />;
 }
 

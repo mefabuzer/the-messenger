@@ -23,7 +23,11 @@ const RegistrationSection = () => {
         </div>
         <div className={styles.buttons}>
           <button onSubmit={() => true}>Регистрация</button>
-          <a href="https://google.com">Войти в аккаунт</a>
+          <p>
+            <a href="https://google.com">Войти в аккаунт</a>
+            <span> | </span>
+            <a href="https://google.com">Восстановить</a>
+          </p>
         </div>
       </form>
     </section>
