@@ -103,8 +103,12 @@
   & > p {
     @include mixins.flexibleText(16px, 14px);
 
-    & > a {
+    & > button {
       color: functions.darken(var(--neutral-color-2), 25);
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
