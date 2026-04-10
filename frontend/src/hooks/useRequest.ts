@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export function useRequest<T>(str: string): [T | null, boolean, Error | null] {
+export function useRequest<T>(
+  str: string,
+  obj: T,
+): [T | null, boolean, Error | null] {
   const [data, setData] = useState<T>(null as T);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -11,7 +14,7 @@ export function useRequest<T>(str: string): [T | null, boolean, Error | null] {
       setIsLoading(true);
 
       (async () => {
-        const response = await axios.get<T>(str);
+        const response = await axios.post<T>(str, obj);
 
         setData(response.data);
       })();

@@ -1,4 +1,4 @@
-import { useRegistrationSectionStore } from "../../../stores/useRegistrationSectionStore";
+import { useRegistrationSectionStore } from "@stores/useRegistrationSectionStore";
 import AuthSection from "./AuthSection";
 import styles from "./MainSection.module.scss";
 import RegistrationSection from "./RegistrationSection";

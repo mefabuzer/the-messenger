@@ -1,30 +1,35 @@
 import { create } from "zustand";
 
+interface IUseRegistrationDataStoreActions {
+  setNewEmail: (email: string) => void;
+  setNewPassword: (password: string) => void;
+  setNewUsername: (nickname: string) => void;
+
+  setDefault: () => void;
+}
+
 interface IUseRegistrationDataStore {
   email: string;
   password: string;
-  nickname: string;
+  username: string;
 
-  setNewEmail: (email: string) => void;
-  setNewPassword: (password: string) => void;
-  setNewNickname: (nickname: string) => void;
-
-  setDefault: () => void;
+  actions: IUseRegistrationDataStoreActions;
 }
 
 export const useRegistrationDataStore = create<IUseRegistrationDataStore>(
   (set) => ({
     email: "",
-    nickname: "",
+    username: "",
     password: "",
 
-    setNewEmail: (email: string) => set((state) => ({ ...state, email })),
-    setNewNickname: (nickname: string) =>
-      set((state) => ({ ...state, nickname })),
-    setNewPassword: (password: string) =>
-      set((state) => ({ ...state, password })),
+    actions: {
+      setNewEmail: (email: string) => set((state) => ({ ...state, email })),
+      setNewUsername: (username: string) =>
+        set((state) => ({ ...state, username })),
+      setNewPassword: (password: string) =>
+        set((state) => ({ ...state, password })),
 
-    setDefault: () =>
-      set((state) => ({ email: "", nickname: "", password: "" })),
+      setDefault: () => set({ email: "", username: "", password: "" }),
+    },
   }),
 );

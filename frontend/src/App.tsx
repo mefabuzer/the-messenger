@@ -1,10 +1,25 @@
-import ChatPage from "./pages/ChatPage/ChatPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import { useUserStore } from "@stores/useUserStore";
+import {
+  ADMINS_ROUTES,
+  PRIVATE_ROUTES,
+  PUBLIC_ROUTES,
+} from "./utils/constants/routes";
+import RoutesList from "@components/RoutesList";
 
 function App() {
-  // return <ChatPage />;
+  const { user } = useUserStore((state) => state);
 
-  return <RegistrationPage />;
+  if (!user) {
+    return <RoutesList routes={PUBLIC_ROUTES} />;
+  }
+
+  if (user && !user.is_admin) {
+    return <RoutesList routes={PRIVATE_ROUTES} />;
+  }
+
+  if (user && user.is_admin) {
+    return <RoutesList routes={ADMINS_ROUTES} />;
+  }
 }
 
 export default App;

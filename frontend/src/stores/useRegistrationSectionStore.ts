@@ -2,19 +2,25 @@ import { create } from "zustand";
 
 type TSectionType = "registration" | "auth" | "restore";
 
-interface IUseRegistrationSectionStore {
-  sectionType: TSectionType;
+interface IUseRegistrationSectionStoreActions {
   setRegistrationType: () => void;
   setAuthType: () => void;
   setRestoreType: () => void;
+}
+
+interface IUseRegistrationSectionStore {
+  sectionType: TSectionType;
+  actions: IUseRegistrationSectionStoreActions;
 }
 
 export const useRegistrationSectionStore = create<IUseRegistrationSectionStore>(
   (set) => ({
     sectionType: "registration",
 
-    setRegistrationType: () => set({ sectionType: "registration" }),
-    setAuthType: () => set({ sectionType: "auth" }),
-    setRestoreType: () => set({ sectionType: "restore" }),
+    actions: {
+      setRegistrationType: () => set({ sectionType: "registration" }),
+      setAuthType: () => set({ sectionType: "auth" }),
+      setRestoreType: () => set({ sectionType: "restore" }),
+    },
   }),
 );
