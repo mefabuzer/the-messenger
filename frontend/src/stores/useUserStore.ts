@@ -1,7 +1,9 @@
 import type { IUser } from "@appTypes/IUser";
 import { create } from "zustand";
 
-interface IUseUserStoreActions {}
+interface IUseUserStoreActions {
+  setUser: (user: IUser | null) => void;
+}
 
 interface IUseUserStore {
   user: IUser | null;
@@ -16,5 +18,7 @@ export const useUserStore = create<IUseUserStore>((set) => ({
   userContacts: null,
   userEnemiesId: null,
 
-  actions: {},
+  actions: {
+    setUser: (user: IUser | null) => set((state) => ({ ...state, user })),
+  },
 }));

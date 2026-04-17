@@ -1,4 +1,4 @@
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "@components/Sidebar/Sidebar";
 import Chat from "./Chat/Chat";
 import styles from "./ChatPage.module.scss";
 import ChatPanel from "./ChatPanel/ChatPanel";

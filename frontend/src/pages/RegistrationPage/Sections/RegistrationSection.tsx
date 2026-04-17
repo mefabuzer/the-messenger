@@ -1,29 +1,33 @@
-import { useRegistrationSectionStore } from "../../../stores/useRegistrationSectionStore";
-import { useRegistrationDataStore } from "../../../stores/useRegistrationDataStore";
+import { useRegistrationSectionStore } from "@stores/useRegistrationSectionStore";
+import { useRegistrationDataStore } from "@stores/useRegistrationDataStore";
 import styles from "./MainSection.module.scss";
 import { useEffect } from "react";
-import { useAlertsStore } from "@stores/useAlertsStore";
-import { isEmailCorrectly } from "@functionals/isEmailCorrectly";
-import { useErrorDelay } from "@hooks/useErrorDelay";
+import { useRegistration } from "@hooks/useRegistration";
+import { useAuth } from "@hooks/useAuth";
+import { useGetUserData } from "@hooks/useGetUserData";
+import Loader from "@components/Loader/Loader";
 
 const RegistrationSection = () => {
   const { actions: sectionActions } = useRegistrationSectionStore(
     (state) => state,
   );
 
-  const { actions: alertsActions } = useAlertsStore((state) => state);
-
-  const [emailError, setEmailError] = useErrorDelay(1000);
-  const [passwordError, setPasswordError] = useErrorDelay(1000);
-  const [usernameError, setUsernameError] = useErrorDelay(1000);
-
   const {
     email,
     username,
     password,
-
     actions: dataActions,
   } = useRegistrationDataStore((state) => state);
+
+  const {
+    fn: registration,
+    emailError,
+    passwordError,
+    usernameError,
+    isLoading: isLoadingRegistration,
+  } = useRegistration();
+  const { fn: auth, isLoading: isLoadingAuth } = useAuth();
+  const { fn: getUserData, isLoading: isLoadingUserData } = useGetUserData();
 
   useEffect(() => {
     return () => {
@@ -31,29 +35,23 @@ const RegistrationSection = () => {
     };
   }, []);
 
-  async function sendData(email: string, password: string, username: string) {
-    let resultErrorMessage = "";
-
-    if (!isEmailCorrectly(email)) {
-      resultErrorMessage = "Почта введена неверно! ";
-      setEmailError(true);
+  const onClick = async () => {
+    const registrationStatus = await registration(email, password, username);
+    if (registrationStatus) {
+      const authStatus = await auth(email, password);
+      if (authStatus) {
+        await getUserData();
+        location.reload();
+      }
     }
+  };
 
-    if (!(password.length >= 5 && password.length <= 20)) {
-      resultErrorMessage += "Пароль должен быть от 5 до 20 символов! ";
-      setPasswordError(true);
-    }
-
-    if (username.length === 0) {
-      resultErrorMessage += "Ваш юзернейм не может быть пустым! ";
-      setUsernameError(true);
-    }
-
-    resultErrorMessage = resultErrorMessage.slice(0, -1);
-    if (resultErrorMessage.length !== 0) {
-      alertsActions.addErrorAlert(resultErrorMessage);
-      return;
-    }
+  if (isLoadingRegistration || isLoadingAuth || isLoadingUserData) {
+    return (
+      <div className={styles.isLoading}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -97,9 +95,7 @@ const RegistrationSection = () => {
         </div>
 
         <div className={styles.buttons}>
-          <button onClick={() => sendData(email, password, username)}>
-            Регистрация
-          </button>
+          <button onClick={onClick}>Регистрация</button>
 
           <p className={styles.miniButtonBody}>
             <button onClick={sectionActions.setAuthType}>

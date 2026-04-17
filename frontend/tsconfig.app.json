@@ -32,7 +32,9 @@
       "@stores/*": ["./src/stores/*"],
       "@pages/*": ["./src/pages/*"],
       "@functionals/*": ["./src/utils/functionals/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@api/*": ["./src/api/*"],
+      "@constants/*": ["./src/utils/constants/*"]
     }
   },
   "include": ["src"]

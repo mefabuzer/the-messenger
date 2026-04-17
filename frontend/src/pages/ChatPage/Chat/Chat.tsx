@@ -2,13 +2,13 @@ import React from "react";
 
 import styles from "./Chat.module.scss";
 
-import clip from "../../../utils/icons/clip.png";
-import arrow from "../../../utils/icons/arrow.png";
-import microphone from "../../../utils/icons/microphone.png";
+import clip from "@images/clip.png";
+import arrow from "@images/arrow.png";
+import microphone from "@images/microphone.png";
 
-import call from "../../../utils/icons/call.png";
-import settings from "../../../utils/icons/settigns.png";
-import { useRequest } from "../../../hooks/useRequest";
+import call from "@images/call.png";
+import settings from "@images/settigns.png";
+import { useRequest } from "@hooks/useRequest";
 
 interface IMessage {}
 
@@ -21,9 +21,10 @@ const requestBody: RequestBody = {
 };
 
 const Chat = () => {
-  const [messages, isLoading, error] = useRequest<IMessage>(
-    "http://26.132.220.182:8080/api/getallmessages?chat_id=1",
-  );
+  // const [messages, isLoading, error] = useRequest<IMessage>(
+  //   "http://26.132.220.182:8080/api/getallmessages?chat_id=1",
+  // );
+  let messages;
 
   console.log(messages);
 

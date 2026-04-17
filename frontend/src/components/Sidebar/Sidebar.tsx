@@ -2,9 +2,9 @@ import styles from "./Sidebar.module.scss";
 import SidebarProfile from "./SidebarProfile/SidebarProfile";
 import SidebarButton from "./SidebarButton/SidebarButton";
 
-import chats from "../../utils/icons/sidebar_chats.png";
-import calls from "../../utils/icons/sidebar_calls.png";
-import settings from "../../utils/icons/sidebar_settings.png";
+import chats from "@images/sidebar_chats.png";
+import calls from "@images/sidebar_calls.png";
+import settings from "@images/sidebar_settings.png";
 
 const Sidebar = () => {
   return (

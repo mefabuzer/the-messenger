@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./ChatPanel.module.scss";
 
-import search from "../../../utils/icons/search.png";
+import search from "@images/search.png";
 import type { IChatsListItem } from "./ChatsListItem/ChatsListItem";
 import ChatsListItem from "./ChatsListItem/ChatsListItem";
 

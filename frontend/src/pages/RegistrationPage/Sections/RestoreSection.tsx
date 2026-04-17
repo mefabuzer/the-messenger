@@ -8,20 +8,18 @@ const RestoreSection = () => {
     (state) => state,
   );
 
-  const [isFirst, setIsFirst] = useState(true);
-
-  function onSendCode(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-    setIsFirst(false);
-  }
-
   const {
     email,
     password,
     code,
-
     actions: dataActions,
   } = useRestoreDataStore((state) => state);
+
+  const [isFirst, setIsFirst] = useState(true);
+
+  // const [emailError, setEmailError] = useErrorDelay(1000);
+  //   const [passwordError, setPasswordError] = useErrorDelay(1000);
+  //   const [usernameError, setUsernameError] = useErrorDelay(1000);
 
   useEffect(() => {
     return () => {
@@ -29,11 +27,37 @@ const RestoreSection = () => {
     };
   }, []);
 
+  // function sendCode(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  //   e.preventDefault();
+  //   setIsFirst(false);
+  // }
+
+  // async function sendData(email: string, password: string) {
+  //   let resultErrorMessage = "";
+
+  //   if (!isEmailCorrectly(email)) {
+  //     resultErrorMessage = "Почта введена неверно! ";
+  //     setEmailError(true);
+  //   }
+
+  //   if (!(password.length >= 5 && password.length <= 20)) {
+  //     resultErrorMessage += "Пароль должен быть от 5 до 20 символов! ";
+  //     setPasswordError(true);
+  //   }
+
+  //   if (resultErrorMessage.length !== 0) {
+  //     resultErrorMessage = resultErrorMessage.slice(0, -1);
+
+  //     alertsActions.addErrorAlert(resultErrorMessage);
+  //     return;
+  //   }
+  // }
+
   return (
     <>
       <h1>Восстановить пароль</h1>
 
-      <form action="" method="">
+      <div>
         <div className={styles.inputs}>
           <section className={styles.inputBody}>
             <p>Почта:</p>
@@ -42,6 +66,8 @@ const RestoreSection = () => {
               placeholder="Введите почту..."
               value={email}
               onChange={(e) => dataActions.setNewEmail(e.target.value)}
+              // className={`${styles.input} ${emailError ? styles.errorInput : ""}`}
+              className={`${styles.input}`}
             />
           </section>
 
@@ -52,6 +78,8 @@ const RestoreSection = () => {
               placeholder="Введите новый пароль..."
               value={password}
               onChange={(e) => dataActions.setNewPassword(e.target.value)}
+              // className={`${styles.input} ${emailError ? styles.errorInput : ""}`}
+              className={`${styles.input}`}
             />
           </section>
 
@@ -62,10 +90,13 @@ const RestoreSection = () => {
               placeholder="Введите код из сообщения..."
               value={code}
               onChange={(e) => dataActions.setNewCode(e.target.value)}
+              // className={`${styles.input} ${emailError ? styles.errorInput : ""}`}
+              className={`${styles.input}`}
             />
 
             <p className={styles.miniButtonBody}>
-              <button onClick={(e) => onSendCode(e)}>
+              {/* <button onClick={(e) => onSendCode(e)}> */}
+              <button onClick={() => setIsFirst(false)}>
                 {isFirst ? "Отправить код на почту" : "Отправить код повторно"}
               </button>
             </p>
@@ -81,7 +112,7 @@ const RestoreSection = () => {
             </button>
           </p>
         </div>
-      </form>
+      </div>
     </>
   );
 };

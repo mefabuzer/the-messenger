@@ -6,7 +6,7 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), basicSsl()],
+  plugins: [react(), basicSsl()], // basicSsl()
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -18,6 +18,8 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@functionals": path.resolve(__dirname, "./src/utils/functionals"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@api": path.resolve(__dirname, "./src/api"),
+      "@constants": path.resolve(__dirname, "./src/utils/constants"),
     },
   },
 });

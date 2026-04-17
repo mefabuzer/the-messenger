@@ -23,6 +23,10 @@
   }
 }
 
+.isLoading {
+  @include mixins.flexCenter;
+}
+
 .inputs {
   margin-bottom: 60px;
   padding: 0 25px;
